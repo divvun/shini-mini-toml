@@ -77,6 +77,7 @@ shini_parse_section()
     RX_SECTION='[a-zA-Z0-9_\-]'
     RX_WS='[ 	]'
     RX_QUOTE='"'
+    RX_COMMENT='#'
     RX_HEX='[0-9A-F]'
     POSTFIX=''
     SKIP_TO_SECTION=''
@@ -133,6 +134,12 @@ shini_parse_section()
     LINE_NUM=0
     SECTION=''
     while read LINE || [ -n "$LINE" ]; do  # -n $LINE catches final line if not empty
+        # Check for comment line
+        if shini_regex_match "$LINE" "^${RX_COMMENT}.*$"; then
+            LINE_NUM=$((LINE_NUM+1))
+            continue
+        fi
+        
         # Check for new sections
         if shini_regex_match "$LINE" "^${RX_WS}*\[${RX_SECTION}${RX_SECTION}*\]${RX_WS}*$"; then
             shini_regex_replace "$LINE" "^${RX_WS}*\[(${RX_SECTION}${RX_SECTION}*)\]${RX_WS}*$" "\1"
