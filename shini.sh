@@ -141,8 +141,8 @@ shini_parse_section()
         fi
         
         # Check for new sections
-        if shini_regex_match "$LINE" "^${RX_WS}*\[${RX_SECTION}${RX_SECTION}*\]${RX_WS}*$"; then
-            shini_regex_replace "$LINE" "^${RX_WS}*\[(${RX_SECTION}${RX_SECTION}*)\]${RX_WS}*$" "\1"
+        if shini_regex_match "$LINE" "^${RX_WS}*\[\[${RX_SECTION}${RX_SECTION}*\]\]${RX_WS}*$"; then
+            shini_regex_replace "$LINE" "^${RX_WS}*\[\[(${RX_SECTION}${RX_SECTION}*)\]\]${RX_WS}*$" "\1"
             SECTION=$shini_retval
 
             if [ "$SKIP_TO_SECTION" != '' ]; then
