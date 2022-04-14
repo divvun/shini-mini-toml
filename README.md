@@ -7,6 +7,10 @@ A small, minimialist, <s>portable</s> <em>compatible</em><sup>1</sup> `/bin/sh` 
 
 ## About
 
+### About this fork
+
+Slightly modified to be able to parse a small subset of [TOML](https://toml.io/) using plain `sh`. This is **NOT** a full TOML parser, and is not intended to be. The basic goal is to be able to parse and read settings from config files similar to `Cargo.toml` files - just get some info out in a structured way, and act on that info using other shell commands.
+
 ### What is `shini`?
 As above.  It's a small set of functions written for inclusion in shell scripts, released under the MIT license.
 
